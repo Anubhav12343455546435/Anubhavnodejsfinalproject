@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Site - Home</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        
+    </style>
+
+</head>
+<body style = >
+    <header>
+        <div class="logo">
+            <a  href="logomain.jpg"></a></div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <% if (!user) { %> <!-- Check if user is not logged in -->
+                    <li><a href="/login">Login</a></li> <!-- Add Login link -->
+                <% } else { %> <!-- If user is logged in -->
+                    <li>Welcome, <%= user.username %>!</li> <!-- Display username -->
+                    <li><a href="/surveys">Surveys List</a></li>
+                    <li><a href="/logout">Logout</a></li> <!-- Add Logout link -->
+                <% } %>
+                <li><a href="/destinations">Destinations</a></li> <!-- Add Destinations link -->
+                <li><a href="/contact">Contact</a></li> <!-- Add Contact link -->
+            </ul>
+            
+
+        </nav>
+    </header>
+    
+    
+    
+    
+    <main style ="background:url('1234.mp4')"   >
+        <div id="left">
+            <h2>Welcome to the most interesting DIY Survey Site!</h2> 
+        </div>
+        <div id="right">
+            <p>Please enter here and start creating your own surveys.</p>
+            <a href="/login" id="enter">Login</a>
+        </div>
+        
+    </main>
+    
+    
+    
+    <footer>
+        <p>&copy; 2023 INFINIX GROUP. All rights reserved.</p>
+    </footer>
+</body>
+</html>

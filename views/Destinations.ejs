@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Site - Surveys List</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">DIY SURVEY</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <% if (!user) { %> <!-- Check if user is not logged in -->
+                    <li><a href="/login">Login</a></li> <!-- Add Login link -->
+                <% } else { %> <!-- If user is logged in -->
+                    <li>Welcome, <%= user.username %>!</li> <!-- Display username -->
+                    <li><a href="/surveys">Surveys List</a></li>
+                    <li><a href="/logout">Logout</a></li> <!-- Add Logout link -->
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Surveys List</h2>
+        <button id="create-survey-btn" onclick="createSurvey()">Create New Survey</button>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Question</th>
+                        <th>Answer Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% surveys.forEach(function(survey) { %>
+                        <tr>
+                            <td><%= survey.title %></td>
+                            <td><%= survey.question %></td>
+                            <td><%= survey.answerFormat %></td>
+                            <td><a href="/editsurvey/<%= survey._id %>" class="edit">Edit</a></td>
+                            <td><a href="/deletesurvey/<%= survey._id %>" class="delete">Delete</a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+    </main>
+    <footer>
+        <p>&copy; 2023 INFINIX GROUP. All rights reserved.</p>
+    </footer>
+    <script>
+        function createSurvey() {
+            window.location.href = '/createsurvey';
+        }
+    </script>
+</body>
+</html>
